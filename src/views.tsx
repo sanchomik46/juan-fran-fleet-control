@@ -80,7 +80,7 @@ export function Dashboard({ data, supervisor, division, changeDivision, start, s
       <header className="section-heading"><h2>Movimientos recientes</h2><button type="button" className="text-link" onClick={() => go('movimientos')}>Ver todos <ArrowRight size={16} /></button></header>
       <MovementList movements={movements} projects={data.projects} go={go} />
     </section>
-    <p className="dashboard-owner">Juan Fran <span>·</span> Vanderlande Fleet &amp; Site Control</p>
+    <p className="dashboard-owner">Arano <span>·</span> Vanderlande Fleet &amp; Site Control</p>
   </div>
 }
 

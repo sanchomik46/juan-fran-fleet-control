@@ -14,9 +14,9 @@ export default defineConfig({
       includeAssets: ['icon-192.png', 'icon-512.png', 'warehouse.webp'],
       manifest: {
         id: './',
-        name: 'Juan Fran · Vanderlande Fleet & Site Control',
-        short_name: 'JF · VDL Fleet',
-        description: 'El centro de operaciones móvil de Juan Fran',
+        name: 'Arano · Vanderlande Fleet & Site Control',
+        short_name: 'Arano · Fleet',
+        description: 'El centro de operaciones móvil de Arano',
         lang: 'es',
         start_url: './',
         scope: './',

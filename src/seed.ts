@@ -3,7 +3,7 @@ import type { EvidencePhoto, Movement, Project, Robot, Snapshot } from './domain
 import { materialFromCatalog } from './catalog'
 import { loadImage, stampPhoto, toBlob } from './media'
 
-// Fixtures sintéticas creadas para la presentación de Juan Fran.
+// Fixtures sintéticas creadas para la presentación de Arano.
 // Las marcas y ciudades son referencias del brief del usuario. Los proyectos,
 // movimientos, series, cantidades, telemetría y evidencias se generan como demo.
 // Las coordenadas del histórico de ejemplo se dejan sin registrar.
@@ -77,9 +77,9 @@ export async function seedData(): Promise<Snapshot> {
     }
   })
   const examples = [
-    { type: 'ENTRADA_HUB', project: null, supervisor: 'Juan Fran', date: dateAt(0, 10, 42), units: [0, 2], materials: [[0, 2], [3, 4]], kind: 'Albarán' },
+    { type: 'ENTRADA_HUB', project: null, supervisor: 'Arano', date: dateAt(0, 10, 42), units: [0, 2], materials: [[0, 2], [3, 4]], kind: 'Albarán' },
     { type: 'SALIDA_A_PROYECTO', project: 0, supervisor: 'Supervisor demo 01', date: dateAt(0, 8, 15), units: [1, 5], materials: [[1, 4]], kind: 'Material' },
-    { type: 'RETORNO_MANTENIMIENTO', project: 3, supervisor: 'Juan Fran', date: dateAt(1, 16, 30), units: [8, 11], materials: [[2, 1]], kind: 'Incidencia' },
+    { type: 'RETORNO_MANTENIMIENTO', project: 3, supervisor: 'Arano', date: dateAt(1, 16, 30), units: [8, 11], materials: [[2, 1]], kind: 'Incidencia' },
     { type: 'SALIDA_A_PROYECTO', project: 2, supervisor: 'Supervisor demo 02', date: dateAt(1, 11, 20), units: [9], materials: [[4, 8]], kind: 'Material' },
     { type: 'SALIDA_A_PROYECTO', project: 1, supervisor: 'Supervisor demo 01', date: dateAt(2, 12, 0), units: [3], materials: [[6, 20]], kind: 'Material' },
     { type: 'SALIDA_A_PROYECTO', project: 3, supervisor: 'Supervisor demo 02', date: dateAt(3, 9, 15), units: [10], materials: [[5, 2]], kind: 'Material' },

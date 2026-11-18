@@ -1,10 +1,10 @@
-# Juan Fran · Vanderlande Fleet & Site Control
+# Arano · Vanderlande Fleet & Site Control
 
 [Demo de presentación para el cliente](https://sanchomik46.github.io/juan-fran-fleet-control/)
 
-PWA en español personalizada para Juan Fran. La interfaz usa una sola columna móvil, navegación inferior con escáner, controles táctiles amplios y formularios con acciones fijas al pie. En pantallas grandes, la aplicación mantiene un ancho máximo de 480 píxeles. La flota inicial, los números de serie, las referencias SKU, las ubicaciones y las evidencias son datos de demostración. Las familias del catálogo siguen la nomenclatura del encargo.
+PWA en español personalizada para Arano. La interfaz usa una sola columna móvil, navegación inferior con escáner, controles táctiles amplios y formularios con acciones fijas al pie. En pantallas grandes, la aplicación mantiene un ancho máximo de 480 píxeles. La flota inicial, los números de serie, las referencias SKU, las ubicaciones y las evidencias son datos de demostración. Las familias del catálogo siguen la nomenclatura del encargo.
 
-Los proyectos, movimientos y métricas iniciales son fixtures sintéticas para esta presentación. Las marcas y ciudades proceden de las referencias del encargo. Los supervisores de ejemplo se identifican como demo y el histórico inicial usa coordenadas sin registrar. Juan Fran es el nombre solicitado para personalizar la aplicación.
+Los proyectos, movimientos y métricas iniciales son fixtures sintéticas para esta presentación. Las marcas y ciudades proceden de las referencias del encargo. Los supervisores de ejemplo se identifican como demo y el histórico inicial usa coordenadas sin registrar. Arano es el nombre solicitado para personalizar la aplicación.
 
 ## Publicar la demo en GitHub Pages
 

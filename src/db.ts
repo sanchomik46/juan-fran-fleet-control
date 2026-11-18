@@ -2,6 +2,7 @@ import { openDB } from 'idb'
 import type { DBSchema } from 'idb'
 import { eligibleRobot, statuses } from './domain'
 import type { Movement, Project, Robot, Snapshot } from './domain'
+import { defaultSupervisor, isLegacySupervisor } from './profile'
 
 interface FleetDB extends DBSchema {
   projects: { key: string; value: Project }
@@ -46,6 +47,30 @@ export async function snapshot(): Promise<Snapshot> {
     read.objectStore('robots').getAll(), read.objectStore('projects').getAll(), read.objectStore('movements').getAll(),
   ])
   await read.done
+  const legacyExamples = movements.filter(movement => movement.demo && isLegacySupervisor(movement.supervisor_name))
+  if (legacyExamples.length) {
+    const { stampPhoto } = await import('./media')
+    const renamed = await Promise.all(legacyExamples.map(async movement => ({
+      ...movement,
+      supervisor_name: defaultSupervisor,
+      photos: await Promise.all(movement.photos.map(async photo => ({
+        ...photo,
+        image: await stampPhoto(photo.image, {
+          timestamp: photo.captured_at,
+          projectId: movement.project_id,
+          gps: photo.gps_coords,
+          supervisor: defaultSupervisor,
+        }, true),
+      }))),
+    })))
+    const write = connection.transaction('movements', 'readwrite')
+    await Promise.all(renamed.map(movement => write.store.put(movement)))
+    await write.done
+    for (const movement of renamed) {
+      const index = movements.findIndex(existing => existing.id === movement.id)
+      movements[index] = movement
+    }
+  }
   movements.sort((a, b) => b.timestamp.localeCompare(a.timestamp))
   return { robots, projects, movements }
 }

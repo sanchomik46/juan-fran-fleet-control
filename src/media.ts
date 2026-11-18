@@ -43,18 +43,19 @@ interface Stamp {
   supervisor: string
 }
 
-export async function stampPhoto(source: Blob | HTMLCanvasElement, stamp: Stamp): Promise<Blob> {
+export async function stampPhoto(source: Blob | HTMLCanvasElement, stamp: Stamp, replaceExistingBand = false): Promise<Blob> {
   const image = source instanceof Blob ? await loadImage(source) : source
-  const ratio = Math.min(1, 1440 / Math.max(image.width, image.height))
+  const sourceHeight = image.height - (replaceExistingBand ? Math.round(image.width / 1000 * 116) : 0)
+  const ratio = Math.min(1, 1440 / Math.max(image.width, sourceHeight))
   const width = Math.max(640, Math.round(image.width * ratio))
-  const height = Math.round(image.height * width / image.width)
+  const height = Math.round(sourceHeight * width / image.width)
   const scale = width / 1000
   const band = Math.round(scale * 116)
   const canvas = document.createElement('canvas')
   canvas.width = width
   canvas.height = height + band
   const ctx = canvas.getContext('2d')!
-  ctx.drawImage(image, 0, 0, width, height)
+  ctx.drawImage(image, 0, 0, image.width, sourceHeight, 0, 0, width, height)
   ctx.save()
   ctx.translate(0, height)
   ctx.scale(scale, scale)
